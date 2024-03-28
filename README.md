@@ -2,7 +2,7 @@
 
 This is a pastebin that can be deployed on Cloudflare workers. It forks from [shz.al](https://github.com/SharzyL/pastebin-worker), thanks for this project.
 
-Demo: [igdu](https://igdu.cloudns.org/) or [shz.al](https://shz.al)  
+Demo: [igdu](https://igdux.top/) or [shz.al](https://shz.al)  
 
 
 [shz.al](https://github.com/SharzyL/pastebin-worker)'s original guideline should change some command line with the relates app changing, such as wrangler publish do not support or recommend now. You should change the two "wrangler publish" to "wrangler deploy" in makefile. Maybe others should remember, but I forget.  
@@ -41,6 +41,7 @@ You are free to deploy the pastebin on your own domain if you host your domain o
 1.1. \*nix environment with bash and basic cli programs. If you are using Windows, try cygwin, WSL or something. 
 1.2. GNU make. 
 1.3. `node` and `yarn`. 
+  
   This part maybe be more important than you think in windows system. Recomman setting: git windows, nodejs(ltsl), cygwin(for install other dependecy app),yarn.
 
 2.Create two KV namespaces on Cloudflare workers dashboard (one for production, one for test). Remember their IDs. If you do not need testing, simply create one,Remember the KV ID. Don't create a workers, just KV. Workers will be created by the command make deploy in later setting.
@@ -55,8 +56,10 @@ Wrangler login will ask you to authenticate your cloudflare account could make c
 6.Modify the contents in `config.json` (which controls the generation of static pages): `BASE_URL` is the URL of your site (no trailing slash); `FAVICON` is the URL to the favicon you want to use on your site. If you need testing, also modify `config.preview.json`.
 
 7. Deploy and enjoy! Before that, check the nodejs's version, the old will not support by wrangler; and you should check whether you has installed yarn before you deploy by cloudflare wrangler. Then you could make deploy. Then you could find your pastebin service will be ok through your custom domain.
-   
- 
+```
+   yarn install
+   make deploy
+``` 
 
 ## Auth
 
